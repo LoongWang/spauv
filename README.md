@@ -1,4 +1,4 @@
-# spauv
+# spauv interface
 
 For installation instruction:
 _____________________________
