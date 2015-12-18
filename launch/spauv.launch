@@ -1,0 +1,35 @@
+<launch>
+   <node pkg="spauv" type="gui.sh" name="interface" respawn="false">
+  </node>
+  <node pkg="spauv" type="core.sh" name="core" respawn="false">
+  </node>
+  <node pkg="spauv" type="controller.sh" name="controller" respawn="false">
+  </node>
+  <node pkg="spauv" type="bucket_vision.py" name="bucket_vision" respawn="false">
+  </node>
+  <node pkg="sp_auv" type="sp_auv_depth" name="sp_auv_depth" respawn="false">
+     <param name="port" type="str" value="/dev/ttyUSB0" />
+     <param name="baud" type="str" value="9600" />
+  </node>
+  <node pkg="SpartonCompass" type="SpartonCompass.py" name="SpartonCompass" respawn="true">
+    <param name="port" value="/dev/ttyUSB1" />
+    <param name="baud" value="19200" />
+    <param name="frequency" value="5" />
+  </node>
+  <node pkg="rosserial_python" type="serial_node.py" name="serial_node" output="screen">
+    <param name="port" value="/dev/ttyACM0" />
+  </node>
+  <node pkg="uvc_camera" type="uvc_camera_node" name="uvc_camera">
+    <param name="width" type="int" value="320" />
+    <param name="height" type="int" value="240" />
+    <param name="fps" type="int" value="30" />
+    <param name="frame" type="string" value="wide_stereo" />
+
+    <param name="auto_focus" type="bool" value="False" />
+    <param name="focus_absolute" type="int" value="0" />
+    <!-- other supported params: auto_exposure, exposure_absolute, brightness, power_line_frequency -->
+
+    <param name="device" type="string" value="/dev/video0" />
+    <param name="camera_info_url" type="string" value="file://$(find uvc_camera)/example.yaml" />
+   </node> 
+</launch>

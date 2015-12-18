@@ -1,0 +1,18 @@
+#!/usr/bin/env python
+PACKAGE = "ros2cv"
+
+from dynamic_reconfigure.parameter_generator_catkin import *
+
+gen = ParameterGenerator()
+
+# Params for Mission
+gen.add("depth_setpoint", double_t, 0, "Desired Depth", 0.0, -5.0, 5.0)
+gen.add("heading_setpoint", double_t, 0, "Desired Heading", 0.0, 0.0, 360.0)
+gen.add("SetupTime", double_t, 0, "Kp val for depth", 0.0, -100.0, 100.0)
+gen.add("Duration", double_t, 0, "Kp val for heading", 0.0, -100.0, 100.0)
+gen.add("VL", double_t, 0, "Default VL value",  0.0, -100.0, 100.0)
+gen.add("VR", double_t, 0, "Default VR value",  0.0, -100.0, 100.0)
+gen.add("HR", double_t, 0, "Default HR value", 0.0, -100.0, 100.0)
+gen.add("HL", double_t, 0, "Default HL value", 0.0, -100.0, 100.0)
+
+exit(gen.generate(PACKAGE, "Mission", "Mission"))

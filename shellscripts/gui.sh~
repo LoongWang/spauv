@@ -1,0 +1,4 @@
+#!/bin/bash 
+
+cd /home/owner/catkin_ws/src/ros2cv/Scripts
+./spauv_interface.py &

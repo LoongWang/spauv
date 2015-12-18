@@ -1,0 +1,17 @@
+#!/usr/bin/env python
+PACKAGE = "ros2cv"
+
+from dynamic_reconfigure.parameter_generator_catkin import *
+
+gen = ParameterGenerator()
+
+# Params for bucket
+gen.add("hueLow", int_t, 0, "Low H bound for bucket", 110, 0, 255)
+gen.add("satLow", int_t, 0, "Low S bound for bucket", 0, 0, 255)
+gen.add("valLow", int_t, 0, "Low V bound for bucket", 0, 0, 255)
+gen.add("hueHigh", int_t, 0, "High H bound for bucket", 137, 0, 255)
+gen.add("satHigh", int_t, 0, "High S bound for bucket", 255, 0, 255)
+gen.add("valHigh", int_t, 0, "High V bound for bucket", 255, 0, 255)
+gen.add("area_thresh", int_t, 0, "Minimum area for bucket", 10000, 1000, 300000)
+
+exit(gen.generate(PACKAGE, "bucketdetector", "bucket"))

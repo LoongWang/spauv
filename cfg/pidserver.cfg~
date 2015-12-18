@@ -1,0 +1,23 @@
+#!/usr/bin/env python
+PACKAGE = "ros2cv"
+
+from dynamic_reconfigure.parameter_generator_catkin import *
+
+gen = ParameterGenerator()
+
+# Params for PIDServer
+gen.add("goal_depth", double_t, 0, "Desired Depth", 0.0, -5.0, 5.0)
+gen.add("goal_heading", double_t, 0, "Desired Heading", 0.0, 0.0, 360.0)
+gen.add("depth_kp", double_t, 0, "Kp val for depth", -100.0, 0.0, 100.0)
+gen.add("heading_kp", double_t, 0, "Kp val for heading", -100.0, 0.0, 100.0)
+gen.add("depth_motor_kp", double_t, 0, "kp val for depth motor",  -100.0, 0.0, 100.0)
+gen.add("heading_motor_kp", double_t, 0, "kp val for heading motor",  -100.0, 0.0, 100.0)
+gen.add("depth_startup_time", double_t, 0, "inertia depth startup time", 0.0, 0.0, 600.0)
+gen.add("heading_startup_time", double_t, 0, "inertia heading startup time", 0.0, 0.0, 600.0)
+gen.add("depth_motor_val", double_t, 0, "val for depth motor", -100.0, 0.0, 100.0)
+gen.add("forward_motor_val", double_t, 0, "val for forward motor", -100.0, 0.0, 100.0)
+gen.add("default_m", double_t, 0, "default motor value", -100.0, 40.0, 100.0)
+gen.add("port_m", double_t, 0, "value for left thruster", -100.0, 0.0, 100.0)
+gen.add("starboard_m", double_t, 0, "value for right thruster", -100.0, 0.0, 100.0)
+
+exit(gen.generate(PACKAGE, "PIDServer", "pidserver"))

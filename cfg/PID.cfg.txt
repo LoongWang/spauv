@@ -1,0 +1,18 @@
+#!/usr/bin/env python
+PACKAGE = "spauv"
+
+from dynamic_reconfigure.parameter_generator_catkin import *
+
+gen = ParameterGenerator()
+
+# Params for PIDServer
+gen.add("goal", double_t, 0, "goal", 0.0, -5.0, 5.0)
+gen.add("depth_kp", double_t, 0, "Kp val for z axis", 0.0, -100.0, 100.0)
+gen.add("heading_kp", double_t, 0, "Kp val for yaw", 0.0, -100.0, 100.0)
+gen.add("depth_motor_kp", double_t, 0, "kp val for depth motor",  0.0, -100.0, 100.0)
+gen.add("heading_motor_kp", double_t, 0, "kp val for heading motor",  0.0, -100.0, 100.0)
+gen.add("depth_startup_time", double_t, 0, "inertia depth startup time", 0.0, 0.0, 600.0)
+gen.add("heading_startup_time", double_t, 0, "inertia heading startup time", 0.0, 0.0, 600.0)
+
+
+exit(gen.generate(PACKAGE, "PIDServer", "PID"))
