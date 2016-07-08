@@ -1,6 +1,7 @@
-#!/bin/bash
 # SP AUV SOFTWARE INSTALLER 
 # WRITTEN BY ALZAM BIN ABDUL GHANI
+
+#Install your ros software first Before following this instructions
 
 # CREATE AND INIT WORKSPACE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 mkdir -p ~/catkin_ws/src
@@ -32,12 +33,6 @@ sudo apt-get install libv4l-dev
 # Original Camera installation site : https://defendtheplanet.net/2014/11/05/using-ros-indigo-webcam-by-the-uvc_camera-usb-video-class-package/
 # End of ros camera driver installer >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-# Setup Install Date >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-#Set the date 
-date_formatted=$(date +%m.%d.%y-%H:%M:%S)
-#Show the date
-echo " Successfully Installed @" $date_formatted
-# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 # INSTALL & RUN Main code >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -45,17 +40,8 @@ echo " Successfully Installed @" $date_formatted
 cd catkin_ws/src/
 git clone spauv folder
 
-#Changes
-cd catkin_ws/src/spauv/shellscripts
-sudo nano gui.sh
-
-In file called 'gui.sh' :
-Line no    Sentence
-1	   #!/bin/bash 
-2
-3           cd /home/owner/catkin_ws/src/spauv/Scripts
-4	   ./spauv_interface.py &
-Change line 3 : cd /home/owner/catkin_ws/src/spauv/Scripts to cd /<ur location of spauv/Scripts>
+# Change all .py/.cfg files into ectuables
+sudo chmod +x <file> 
 
 #Build code
 cd catkin_ws/
@@ -66,3 +52,15 @@ roslaunch spauv spauv.launch
 
 # END OF ROS INSTALLER >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+Troubleshooting 
+#1 if spauv_interface cannot be run
+'''cd catkin_ws/src/spauv/shellscripts
+sudo nano gui.sh
+
+In file called 'gui.sh' :
+Line no    Sentence
+1	   #!/bin/bash 
+2
+3           cd /home/owner/catkin_ws/src/spauv/Scripts
+4	   ./spauv_interface.py &
+Change line 3 : cd /home/owner/catkin_ws/src/spauv/Scripts to cd /<ur location of spauv/Scripts> '''
